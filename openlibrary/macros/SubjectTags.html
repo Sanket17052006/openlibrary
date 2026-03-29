@@ -24,3 +24,10 @@ $if work:
       $:render_subjects(_("Places"), work.subject_places,"BookOverview|SubjectPlacesClick", prefix="place:")
     $if tag=="Times":
       $:render_subjects(_("Times"), work.subject_times,"BookOverview|SubjectTimesClick", prefix="time:")
+    $if tag=="Genres":
+      $:render_subjects(_("Genres"), work.get('subject_genres') or [],"BookOverview|SubjectGenresClick", prefix="genre:")
+    $if tag=="Moods":
+      $:render_subjects(_("Moods"), work.get('subject_moods') or [],"BookOverview|SubjectMoodsClick", prefix="mood:")
+    $if tag=="Formats":
+      $:render_subjects(_("Formats"), work.get('subject_formats') or [],"BookOverview|SubjectFormatsClick", prefix="format:")
+

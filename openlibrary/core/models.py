@@ -679,6 +679,33 @@ class Work(Thing):
             return [self._make_subject_link(s, "time:") for s in self.subject_times]
         else:
             return []
+        
+    def get_subject_genres(self):
+        val = self.get('subject_genres')
+        if not val:
+            return []
+        return list(val) if not isinstance(val, list) else val
+
+    def get_subject_moods(self):
+        val = self.get('subject_moods')
+        if not val:
+            return []
+        return list(val) if not isinstance(val, list) else val
+
+    def get_subject_formats(self):
+        val = self.get('subject_formats')
+        if not val:
+            return []
+        return list(val) if not isinstance(val, list) else val
+
+    def get_genre_links(self):
+        return [self._make_subject_link(s, "genre:") for s in self.get_subject_genres()]
+
+    def get_mood_links(self):
+        return [self._make_subject_link(s, "mood:") for s in self.get_subject_moods()]
+
+    def get_format_links(self):
+        return [self._make_subject_link(s, "format:") for s in self.get_subject_formats()]
 
     def get_primary_series(self) -> WorkSeriesEdgeDB | None:
         series = self.series or []
